@@ -3,6 +3,7 @@ using CrudAPI.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrudAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260315185518_AddUsuariosTable")]
+    partial class AddUsuariosTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,9 +91,6 @@ namespace CrudAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("IdEmpleado")
-                        .HasColumnType("int");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -101,8 +101,6 @@ namespace CrudAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdEmpleado");
 
                     b.ToTable("Usuarios");
                 });
@@ -116,15 +114,6 @@ namespace CrudAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("PerfilReferencia");
-                });
-
-            modelBuilder.Entity("CrudAPI.Entities.Usuario", b =>
-                {
-                    b.HasOne("CrudAPI.Entities.Empleado", "Empleado")
-                        .WithMany()
-                        .HasForeignKey("IdEmpleado");
-
-                    b.Navigation("Empleado");
                 });
 
             modelBuilder.Entity("CrudAPI.Entities.Perfil", b =>

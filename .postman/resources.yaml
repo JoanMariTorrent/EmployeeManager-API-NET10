@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 75c2216b-076f-4a5e-8373-bc2e89863f2c
+
+localResources:
+  specs:
+    - ..\CrudAPI\obj\Debug\net10.0\EndpointInfo\CrudAPI.json

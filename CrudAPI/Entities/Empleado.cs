@@ -6,6 +6,6 @@
         public string? NombreCompleto { get; set; }
         public int Sueldo { get; set; }
         public int IdPerfil{ get; set; }
-        public virtual Perfil PerfilReferencia {  get; set; } 
+        public virtual Perfil? PerfilReferencia {  get; set; } 
     }
 }

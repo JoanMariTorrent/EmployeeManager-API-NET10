@@ -15,18 +15,13 @@ namespace CrudAPI.Services
 
         public async Task<List<PerfilDTO>> GetPerfiles()
         {
-            var listaDTO = new List<PerfilDTO>();
-            var listaDB = await _context.Perfiles.ToListAsync();
-
-
-            foreach (var item in listaDB)
-                listaDTO.Add(new PerfilDTO
+            return await _context.Perfiles
+                .Select(p => new PerfilDTO 
                 {
-                    IdPerfil = item.IdPerfil,
-                    Nombre = item.Nombre
-                });
-
-            return listaDTO;
+                    IdPerfil = p.IdPerfil,
+                    Nombre = p.Nombre
+                })
+                .ToListAsync();
         }
 
     }

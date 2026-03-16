@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CrudAPI.DTOs;
 using CrudAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrudAPI.Controllers
 {
@@ -15,6 +16,7 @@ namespace CrudAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("lista")]
         public async Task<ActionResult<List<PerfilDTO>>> GetTask()
         {
