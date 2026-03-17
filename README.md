@@ -33,6 +33,24 @@ Asynchronous Programming: Fully async/await driven to maximize server throughput
 
 Clean Code: Adhering to SOLID principles for better scalability.
 
+🔐 Security & Identity
+- **JWT Authentication:** Secure access using JSON Web Tokens with `HS256` signature.
+- **Role-Based Authorization (RBAC):** Distinct access levels for `Admin` and `Employee`.
+- **Password Hashing:** Industry-standard protection using `BCrypt` to ensure user data safety.
+- **Identity Context:** Integrated `GetMe` endpoint to retrieve authenticated user sessions from token claims.
+
+🚦 API Endpoints (Quick Reference)
+
+#### 🔑 Authentication
+- `POST /api/auth/register` - Create a new user & employee profile.
+- `POST /api/auth/login` - Authenticate and receive a JWT Bearer Token.
+- `GET /api/auth/me` - Retrieve current user session info (Requires Token).
+
+#### 👥 Employees
+- `GET /api/empleado` - List all employees.
+- `POST /api/empleado` - Create new entry (Admin only).
+- `GET /api/empleado/{id}` - Get specific details.
+
 ### 🚀 How to Run
 1. **Clone the repository:** `git clone https://github.com/tu-usuario/EmployeeManager-API-NET10.git`
 2. **Database Setup:** Update the connection string in `appsettings.json` with your local SQL Server instance.
