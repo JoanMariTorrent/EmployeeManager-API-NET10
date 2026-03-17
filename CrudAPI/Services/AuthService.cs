@@ -98,11 +98,31 @@ namespace CrudAPI.Services
 
 
 
+        public async Task<UserSessionDTO> GetCurrentUserData(int userID)
+        { 
+            var usuario = await _context.Usuarios
+                .Include(u => u.Empleado)
+                .FirstOrDefaultAsync(i => i.Id == userID);
+
+            if (usuario == null || usuario.Empleado == null)
+                return null;
+
+
+            return new UserSessionDTO
+            {
+                Nombre = usuario.Empleado.NombreCompleto,
+                Rol = usuario.Rol
+            };
+        }
+
+
+
 
         private string CreateToken(Usuario usuario)
         {
             var claims = new[]
             {
+                new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
                 new Claim(ClaimTypes.Name, usuario.Username),
                 new Claim(ClaimTypes.Role, usuario.Rol)
             };
@@ -110,7 +130,7 @@ namespace CrudAPI.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 _configuration["Jwt:Key"]!));
 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
             var token = new JwtSecurityToken(
                 claims: claims,

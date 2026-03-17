@@ -28,14 +28,14 @@ namespace CrudAPI.Controllers
         // Show all accounts
         [HttpGet("Get accounts")]
         [Authorize(Roles = StaticRoles.Admin)]
-        public async Task<IActionResult> GetAccounts()
+        public async Task<ActionResult> GetAccounts()
         {
             return Ok(await _authService.GetAccounts());
         }
 
         // Register
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(RegisterDTO request)
+        public async Task<ActionResult> Register(RegisterDTO request)
         {
             var result = await _authService.Register(request);
             if(result == null) return BadRequest("Este nombre ya existe, prueba con otro");
@@ -59,15 +59,26 @@ namespace CrudAPI.Controllers
         // Delete
         [HttpDelete("Delete Account")]
         [Authorize(Roles = StaticRoles.Admin)]
-        public async Task<IActionResult> DeleteAccount(RegisterDTO request)
+        public async Task<ActionResult> DeleteAccount(RegisterDTO request)
         {
             var result = await _authService.DeleteAccount(request);
             return Ok(result);
         }
 
 
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<ActionResult<UserSessionDTO>> GetMe()
+        { 
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        
+            if(userIdClaim == null) return Unauthorized();
 
+            var userData = await _authService.GetCurrentUserData(int.Parse(userIdClaim));
+
+            if(userData == null) return NotFound("Usuario no encontrado");
+
+            return Ok(userData);
+        }
     }
 }
