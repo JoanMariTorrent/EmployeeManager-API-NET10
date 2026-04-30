@@ -1,7 +1,3 @@
-Tienes toda la razón. El exceso de adjetivos como "robust", "scalable", "seamless" y "industry-standard" grita "IA" a los cuatro vientos. Los reclutadores prefieren ver cómo explicas tú el proyecto con tus propias palabras.
-
-Aquí tienes una versión mucho más natural, directa y humana, centrada en lo que realmente importa: qué hace y qué has aprendido.
-
 🚀 EmployeeManager API (.NET 10)
 Este es mi primer proyecto de backend tras mi experiencia en Game Dev con Unity. El objetivo era aplicar mis conocimientos de C# para construir una base sólida en sistemas de servidor, centrándome en la estructura, la seguridad y el código limpio.
 
