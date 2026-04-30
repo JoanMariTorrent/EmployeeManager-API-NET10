@@ -1,58 +1,44 @@
-🚀 EmployeeManager API - .NET 10
-A robust and scalable Employee Management Backend built with .NET 10. 
-This is my debut project in backend development, where I’ve translated my experience in Game Development (Unity/C#) into building structured and scalable server-side systems.
+Tienes toda la razón. El exceso de adjetivos como "robust", "scalable", "seamless" y "industry-standard" grita "IA" a los cuatro vientos. Los reclutadores prefieren ver cómo explicas tú el proyecto con tus propias palabras.
+
+Aquí tienes una versión mucho más natural, directa y humana, centrada en lo que realmente importa: qué hace y qué has aprendido.
+
+🚀 EmployeeManager API (.NET 10)
+Este es mi primer proyecto de backend tras mi experiencia en Game Dev con Unity. El objetivo era aplicar mis conocimientos de C# para construir una base sólida en sistemas de servidor, centrándome en la estructura, la seguridad y el código limpio.
 
 🛠️ Tech Stack
-Framework: .NET 10 (Web API)
+.NET 10 (Web API) & C# 14
 
-Language: C# 14
+SQL Server con Entity Framework Core
 
-Database: SQL Server
+JWT para autenticación y BCrypt para contraseñas
 
-ORM: Entity Framework Core
+Swagger para documentación
 
-Documentation: Swagger / OpenAPI
+🏗️ Lo que he implementado
+Arquitectura en Capas (N-Layer): Separación clara entre controladores, lógica de negocio (Services) y acceso a datos (Repository).
 
-🏗️ Architecture & Patterns
-I implemented an N-Layer Architecture to ensure separation of concerns:
+Seguridad: Autenticación por roles (Admin y Employee) mediante JWT.
 
-Controllers: Handling HTTP requests and responses.
+Relaciones SQL: Gestión de una relación 1:N entre perfiles y empleados.
 
-Services: Core business logic and data processing.
+Código Asíncrono: Uso de async/await en todo el flujo de datos para mejorar el rendimiento.
 
-DTOs (Data Transfer Objects): Ensuring secure and efficient data exchange.
+DTOs: Intercambio de datos seguro para no exponer directamente las entidades de la base de datos.
 
-Repository Pattern (via EF Core): For streamlined database interactions.
+🚦 Endpoints principales
+POST /auth/register & /login: Registro y obtención de token.
 
-🌟 Key Features
-Full CRUD: Seamless Create, Read, Update, and Delete operations for employees.
+GET /auth/me: Verificación de sesión del usuario actual.
 
-Relational Database: Optimized 1:N relationship management between Profiles and Employees.
+GET /empleado: Listado completo de la plantilla.
 
-Asynchronous Programming: Fully async/await driven to maximize server throughput.
+POST /empleado: Creación de nuevos registros (solo para administradores).
 
-Clean Code: Adhering to SOLID principles for better scalability.
+⚙️ Instalación rápida
+Clona el repo.
 
-🔐 Security & Identity
-- **JWT Authentication:** Secure access using JSON Web Tokens with `HS256` signature.
-- **Role-Based Authorization (RBAC):** Distinct access levels for `Admin` and `Employee`.
-- **Password Hashing:** Industry-standard protection using `BCrypt` to ensure user data safety.
-- **Identity Context:** Integrated `GetMe` endpoint to retrieve authenticated user sessions from token claims.
+Configura tu cadena de conexión en appsettings.json.
 
-🚦 API Endpoints (Quick Reference)
+Ejecuta Update-Database en la consola de paquetes para crear las tablas.
 
-#### 🔑 Authentication
-- `POST /api/auth/register` - Create a new user & employee profile.
-- `POST /api/auth/login` - Authenticate and receive a JWT Bearer Token.
-- `GET /api/auth/me` - Retrieve current user session info (Requires Token).
-
-#### 👥 Employees
-- `GET /api/empleado` - List all employees.
-- `POST /api/empleado` - Create new entry (Admin only).
-- `GET /api/empleado/{id}` - Get specific details.
-
-### 🚀 How to Run
-1. **Clone the repository:** `git clone https://github.com/tu-usuario/EmployeeManager-API-NET10.git`
-2. **Database Setup:** Update the connection string in `appsettings.json` with your local SQL Server instance.
-3. **Apply Migrations:** Run `Update-Database` in the Package Manager Console.
-4. **Run the Project:** Press `F5` in Visual Studio. Swagger will open automatically at `/swagger`.
+Lanza el proyecto (F5) y se abrirá Swagger automáticamente.
